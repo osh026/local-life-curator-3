@@ -1,0 +1,425 @@
+import React, { useState } from 'react';
+import { CheckCircle, XCircle, ArrowRight, Users, FileText, Award } from 'lucide-react';
+
+export default function SmartFarmLanding() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: ''
+  });
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleSubmit = () => {
+    if (!formData.name || !formData.email || !formData.phone) {
+      alert('모든 항목을 입력해주세요.');
+      return;
+    }
+    alert('신청이 완료되었습니다!\n2일 이내에 연락드리겠습니다.');
+    setFormData({ name: '', email: '', phone: '' });
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* 상단 연락처 */}
+      <div className="bg-green-800 text-white text-sm py-2 px-4 text-center">
+        📞 상담문의: 02-1234-5678 | 📧 info@smartfarm.kr
+      </div>
+
+      {/* 네비게이션 */}
+      <nav className="bg-white border-b sticky top-0 z-50 shadow-sm">
+        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="font-bold text-xl text-green-800">정밀 재배 매뉴얼</div>
+          <button 
+            onClick={() => scrollToSection('apply')}
+            className="bg-green-700 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-800"
+          >
+            신청하기
+          </button>
+        </div>
+      </nav>
+
+      {/* 메인 헤더 */}
+      <section className="bg-gradient-to-b from-green-50 to-white py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            ✅ 농촌진흥청 협력 검증
+          </div>
+          <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            스마트팜 실패를<br />70% 줄이는 방법
+          </h1>
+          <p className="text-xl text-gray-600 mb-10">
+            3,000만원 투자했는데 작물이 다 죽었다면?<br />
+            <span className="font-bold text-green-700">검증된 재배 매뉴얼</span>이 답입니다.
+          </p>
+          <button 
+            onClick={() => scrollToSection('apply')}
+            className="bg-green-700 text-white px-10 py-4 rounded-lg text-lg font-bold hover:bg-green-800 shadow-lg"
+          >
+            지금 99,000원에 신청하기 →
+          </button>
+          <p className="text-sm text-gray-500 mt-4">선착순 5명 한정 (정상가 300,000원)</p>
+        </div>
+      </section>
+
+      {/* 이런 고민 있으신가요? */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">이런 고민 있으신가요?</h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-xl shadow-sm border-2 border-red-200">
+              <div className="text-4xl mb-4">😰</div>
+              <h3 className="font-bold text-lg mb-3">온도 실수로 상추 전멸</h3>
+              <p className="text-gray-600 text-sm">
+                온도 설정 2도 차이로 1만주가 말라죽었어요. 500만원 날렸습니다.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-sm border-2 border-red-200">
+              <div className="text-4xl mb-4">😵</div>
+              <h3 className="font-bold text-lg mb-3">정보가 너무 많아서 혼란</h3>
+              <p className="text-gray-600 text-sm">
+                유튜브, 블로그마다 다른 얘기... 뭐가 맞는지 모르겠어요.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-sm border-2 border-red-200">
+              <div className="text-4xl mb-4">😱</div>
+              <h3 className="font-bold text-lg mb-3">논문은 어려워서 이해 불가</h3>
+              <p className="text-gray-600 text-sm">
+                논문 읽어봐도 우리 농장에 어떻게 적용하는지 모르겠어요.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 해결책 */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-4">우리가 해결해드립니다</h2>
+          <p className="text-center text-gray-600 mb-12">현장 데이터 + 논문 검증 = 믿을 수 있는 매뉴얼</p>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="text-green-700" size={40} />
+              </div>
+              <div className="bg-green-700 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-3">
+                STEP 1
+              </div>
+              <h3 className="font-bold text-lg mb-3">실제 농장 데이터 수집</h3>
+              <p className="text-gray-600 text-sm">
+                전국 스마트팜에서<br />
+                실제로 잘 키운 데이터만<br />
+                모았습니다
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <FileText className="text-green-700" size={40} />
+              </div>
+              <div className="bg-green-700 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-3">
+                STEP 2
+              </div>
+              <h3 className="font-bold text-lg mb-3">논문으로 확인</h3>
+              <p className="text-gray-600 text-sm">
+                5편 이상의 논문과<br />
+                비교해서 과학적으로<br />
+                검증합니다
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="text-green-700" size={40} />
+              </div>
+              <div className="bg-green-700 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-3">
+                STEP 3
+              </div>
+              <h3 className="font-bold text-lg mb-3">쉬운 매뉴얼 완성</h3>
+              <p className="text-gray-600 text-sm">
+                초보자도 따라할 수 있게<br />
+                A4 5장으로<br />
+                정리해드립니다
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 비교표 */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">기존 방법 vs 우리 매뉴얼</h2>
+          
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-gray-800 text-white">
+                  <th className="py-4 px-6 text-left">구분</th>
+                  <th className="py-4 px-6 text-center">유튜브/블로그</th>
+                  <th className="py-4 px-6 text-center bg-green-700">우리 매뉴얼</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                <tr>
+                  <td className="py-4 px-6 font-medium">출처 신뢰성</td>
+                  <td className="py-4 px-6 text-center">
+                    <XCircle className="text-red-500 mx-auto" size={24} />
+                    <div className="text-sm text-gray-600 mt-1">개인 경험</div>
+                  </td>
+                  <td className="py-4 px-6 text-center bg-green-50">
+                    <CheckCircle className="text-green-600 mx-auto" size={24} />
+                    <div className="text-sm text-gray-600 mt-1">농촌진흥청 협력</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6 font-medium">과학적 검증</td>
+                  <td className="py-4 px-6 text-center">
+                    <XCircle className="text-red-500 mx-auto" size={24} />
+                    <div className="text-sm text-gray-600 mt-1">없음</div>
+                  </td>
+                  <td className="py-4 px-6 text-center bg-green-50">
+                    <CheckCircle className="text-green-600 mx-auto" size={24} />
+                    <div className="text-sm text-gray-600 mt-1">논문 5편 이상</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6 font-medium">실전 적용</td>
+                  <td className="py-4 px-6 text-center">
+                    <XCircle className="text-red-500 mx-auto" size={24} />
+                    <div className="text-sm text-gray-600 mt-1">막연함</div>
+                  </td>
+                  <td className="py-4 px-6 text-center bg-green-50">
+                    <CheckCircle className="text-green-600 mx-auto" size={24} />
+                    <div className="text-sm text-gray-600 mt-1">단계별 가이드</div>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-6 font-medium">사후 지원</td>
+                  <td className="py-4 px-6 text-center">
+                    <XCircle className="text-red-500 mx-auto" size={24} />
+                    <div className="text-sm text-gray-600 mt-1">없음</div>
+                  </td>
+                  <td className="py-4 px-6 text-center bg-green-50">
+                    <CheckCircle className="text-green-600 mx-auto" size={24} />
+                    <div className="text-sm text-gray-600 mt-1">1개월 Q&A</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* 무엇을 받나요 */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">무엇을 받나요?</h2>
+          
+          <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 border-2 border-green-700">
+            <div className="text-center mb-8">
+              <div className="inline-block bg-red-600 text-white px-4 py-2 rounded-full font-bold mb-4">
+                ⚡ 선착순 5명만
+              </div>
+              <div className="flex items-center justify-center gap-4 mb-2">
+                <span className="text-2xl text-gray-400 line-through">300,000원</span>
+                <ArrowRight className="text-gray-400" />
+                <span className="text-5xl font-bold text-green-700">99,000원</span>
+              </div>
+              <div className="text-lg font-semibold text-green-700">67% 할인!</div>
+            </div>
+
+            <div className="space-y-4 max-w-2xl mx-auto">
+              <div className="bg-white p-4 rounded-lg flex items-start gap-3">
+                <CheckCircle className="text-green-600 flex-shrink-0 mt-1" size={24} />
+                <div>
+                  <div className="font-bold mb-1">엽채류 재배 매뉴얼 PDF</div>
+                  <div className="text-sm text-gray-600">온도, 습도, 광량 등 모든 환경 설정값 포함 (A4 5장)</div>
+                </div>
+              </div>
+
+              <div className="bg-white p-4 rounded-lg flex items-start gap-3">
+                <CheckCircle className="text-green-600 flex-shrink-0 mt-1" size={24} />
+                <div>
+                  <div className="font-bold mb-1">1:1 화상 상담 30분</div>
+                  <div className="text-sm text-gray-600">우리 농장에 어떻게 적용하는지 직접 설명</div>
+                </div>
+              </div>
+
+              <div className="bg-white p-4 rounded-lg flex items-start gap-3">
+                <CheckCircle className="text-green-600 flex-shrink-0 mt-1" size={24} />
+                <div>
+                  <div className="font-bold mb-1">이메일 Q&A 1개월</div>
+                  <div className="text-sm text-gray-600">궁금한 거 있으면 언제든 물어보세요 (48시간 내 답변)</div>
+                </div>
+              </div>
+
+              <div className="bg-white p-4 rounded-lg flex items-start gap-3">
+                <CheckCircle className="text-green-600 flex-shrink-0 mt-1" size={24} />
+                <div>
+                  <div className="font-bold mb-1">참고 논문 리스트</div>
+                  <div className="text-sm text-gray-600">더 공부하고 싶으면 논문 목록도 드려요</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 신청 조건 */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">신청 조건</h2>
+          
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-green-700 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                  1
+                </div>
+                <div>
+                  <div className="font-bold mb-1">스마트팜 운영 1년 미만이거나 준비 중</div>
+                  <div className="text-sm text-gray-600">초보자를 위한 프로그램입니다</div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-green-700 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                  2
+                </div>
+                <div>
+                  <div className="font-bold mb-1">엽채류(상추 등) 재배 계획</div>
+                  <div className="text-sm text-gray-600">현재는 엽채류 매뉴얼만 제공</div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-8 h-8 bg-green-700 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                  3
+                </div>
+                <div>
+                  <div className="font-bold mb-1">사용 후기 작성 가능</div>
+                  <div className="text-sm text-gray-600">1개월 후 간단한 후기 부탁드려요</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 신청 폼 */}
+      <section id="apply" className="py-20 px-4 bg-white">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">지금 신청하세요</h2>
+            <p className="text-xl text-gray-600">2일 이내 연락드립니다</p>
+          </div>
+
+          <div className="bg-gray-50 rounded-2xl shadow-xl p-8">
+            <div className="space-y-5">
+              <div>
+                <label className="block font-bold mb-2 text-gray-700">이름 *</label>
+                <input
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-700"
+                  placeholder="홍길동"
+                />
+              </div>
+
+              <div>
+                <label className="block font-bold mb-2 text-gray-700">이메일 *</label>
+                <input
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-700"
+                  placeholder="example@email.com"
+                />
+              </div>
+
+              <div>
+                <label className="block font-bold mb-2 text-gray-700">연락처 *</label>
+                <input
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-green-700"
+                  placeholder="010-1234-5678"
+                />
+              </div>
+
+              <button
+                onClick={handleSubmit}
+                className="w-full bg-green-700 text-white py-5 rounded-lg text-xl font-bold hover:bg-green-800 shadow-lg mt-6"
+              >
+                99,000원에 신청하기 →
+              </button>
+
+              <p className="text-center text-sm text-gray-500 mt-4">
+                ✅ 2일 이내 연락 | ✅ 개인정보 안전보관 | ✅ 무료 상담
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 px-4 bg-gray-50">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12">자주 묻는 질문</h2>
+          
+          <div className="space-y-4">
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="font-bold text-lg mb-2">Q. 정말 초보도 따라할 수 있나요?</div>
+              <div className="text-gray-600">네! 전문 용어 없이 쉽게 설명합니다. 1:1 상담도 있어요.</div>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="font-bold text-lg mb-2">Q. 환불 가능한가요?</div>
+              <div className="text-gray-600">매뉴얼 다운로드 전까지는 100% 환불 가능합니다.</div>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="font-bold text-lg mb-2">Q. 다른 작물 매뉴얼도 있나요?</div>
+              <div className="text-gray-600">현재는 엽채류만 제공합니다. 추후 과채류도 출시 예정입니다.</div>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 shadow-sm">
+              <div className="font-bold text-lg mb-2">Q. 5명 넘으면 어떻게 되나요?</div>
+              <div className="text-gray-600">정상가 300,000원으로 구매하셔야 합니다. 서두르세요!</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12 px-4">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="font-bold text-2xl mb-4">정밀 재배 매뉴얼 아키비스트</div>
+          <div className="text-gray-400 mb-6">
+            스마트팜 성공을 데이터로 만듭니다
+          </div>
+          <div className="text-sm text-gray-500">
+            사업자등록번호: 000-00-00000 | 대표: 홍길동<br />
+            주소: 서울시 OO구 OO동 000-00<br />
+            이메일: contact@smartfarm-archivist.kr | 전화: 1588-0000
+          </div>
+          <div className="text-xs text-gray-600 mt-6">
+            © 2024 정밀 재배 매뉴얼 아키비스트. All rights reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
